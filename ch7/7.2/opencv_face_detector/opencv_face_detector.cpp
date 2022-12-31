@@ -5,14 +5,14 @@
 
 int main(int argc, char* argv[])
 {
-    // ƒLƒƒƒvƒ`ƒƒ‚ğŠJ‚­
-    cv::VideoCapture capture = cv::VideoCapture( "../face.jpg" ); // ‰æ‘œƒtƒ@ƒCƒ‹
-    //cv::VideoCapture capture = cv::VideoCapture( 0 ); // ƒJƒƒ‰
+    // ã‚­ãƒ£ãƒ—ãƒãƒ£ã‚’é–‹ã
+    cv::VideoCapture capture = cv::VideoCapture( "../face.jpg" ); // ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
+    //cv::VideoCapture capture = cv::VideoCapture( 0 ); // ã‚«ãƒ¡ãƒ©
     if( !capture.isOpened() ){
         throw std::runtime_error( "can't open capture!" );
     }
 
-    // ƒ‚ƒfƒ‹‚ğ“Ç‚İ‚Ş
+    // ãƒ¢ãƒ‡ãƒ«ã‚’èª­ã¿è¾¼ã‚€
     // const std::string weights = "../opencv_face_detector.caffemodel"; // float32
     // const std::string config = "../opencv_face_detector.prototxt";
     const std::string weights = "../opencv_face_detector_fp16.caffemodel"; // float16
@@ -21,20 +21,20 @@ int main(int argc, char* argv[])
     // const std::string config = "../opencv_face_detector_uint8.pbtxt";
     cv::dnn::DetectionModel model = cv::dnn::DetectionModel( weights, config );
 
-    // ƒ‚ƒfƒ‹‚Ì„˜_‚Ég—p‚·‚éƒGƒ“ƒWƒ“‚ÆƒfƒoƒCƒX‚ğİ’è‚·‚é
+    // ãƒ¢ãƒ‡ãƒ«ã®æ¨è«–ã«ä½¿ç”¨ã™ã‚‹ã‚¨ãƒ³ã‚¸ãƒ³ã¨ãƒ‡ãƒã‚¤ã‚¹ã‚’è¨­å®šã™ã‚‹
     model.setPreferableBackend( cv::dnn::DNN_BACKEND_OPENCV );
     model.setPreferableTarget( cv::dnn::DNN_TARGET_CPU );
 
-    // ƒ‚ƒfƒ‹‚Ì“ü—Íƒpƒ‰ƒ[ƒ^[‚ğİ’è‚·‚é
-    const double scale = 1.0;                                  // ƒXƒP[ƒ‹ƒtƒ@ƒNƒ^[
-    const cv::Size size = cv::Size( 300, 300 );                // “ü—ÍƒTƒCƒY
-    const cv::Scalar mean = cv::Scalar( 104.0, 177.0, 123.0 ); //·‚µˆø‚©‚ê‚é•½‹Ï’l
-    const bool swap = false;                                   // ƒ`ƒƒƒ“ƒlƒ‹‚Ì‡”ÔiTrue: RGBAFalse: BGRj
-    const bool crop = false;                                   // ƒNƒƒbƒv
+    // ãƒ¢ãƒ‡ãƒ«ã®å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’è¨­å®šã™ã‚‹
+    const double scale = 1.0;                                  // ã‚¹ã‚±ãƒ¼ãƒ«ãƒ•ã‚¡ã‚¯ã‚¿ãƒ¼
+    const cv::Size size = cv::Size( 300, 300 );                // å…¥åŠ›ã‚µã‚¤ã‚º
+    const cv::Scalar mean = cv::Scalar( 104.0, 177.0, 123.0 ); //å·®ã—å¼•ã‹ã‚Œã‚‹å¹³å‡å€¤
+    const bool swap = false;                                   // ãƒãƒ£ãƒ³ãƒãƒ«ã®é †ç•ªï¼ˆTrue: RGBã€False: BGRï¼‰
+    const bool crop = false;                                   // ã‚¯ãƒ­ãƒƒãƒ—
     model.setInputParams( scale, size, mean, swap, crop );
 
     while( true ){
-        // ƒtƒŒ[ƒ€‚ğƒLƒƒƒvƒ`ƒƒ‚µ‚Ä‰æ‘œ‚ğ“Ç‚İ‚Ş
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ã‚­ãƒ£ãƒ—ãƒãƒ£ã—ã¦ç”»åƒã‚’èª­ã¿è¾¼ã‚€
         cv::Mat image;
         capture >> image;
         if( image.empty() ){
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
             break;
         }
 
-        // ‰æ‘œ‚ª3ƒ`ƒƒƒ“ƒlƒ‹ˆÈŠO‚Ìê‡‚Í3ƒ`ƒƒƒ“ƒlƒ‹‚É•ÏŠ·‚·‚é
+        // ç”»åƒãŒ3ãƒãƒ£ãƒ³ãƒãƒ«ä»¥å¤–ã®å ´åˆã¯3ãƒãƒ£ãƒ³ãƒãƒ«ã«å¤‰æ›ã™ã‚‹
         if( image.channels() == 1 ){
             cv::cvtColor( image, image, cv::COLOR_GRAY2BGR );
         }
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
             cv::cvtColor( image, image, cv::COLOR_BGRA2BGR );
         }
 
-        // Šç‚ğŒŸo‚·‚é
+        // é¡”ã‚’æ¤œå‡ºã™ã‚‹
         const float confidence_threshold = 0.6;
         const float nms_threshold = 0.4;
         std::vector<int32_t> class_ids;
@@ -58,14 +58,14 @@ int main(int argc, char* argv[])
         std::vector<cv::Rect> boxes;
         model.detect( image, class_ids, confidences, boxes, confidence_threshold, nms_threshold );
 
-        // ŒŸo‚µ‚½Šç‚ÌƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒX‚ğ•`‰æ‚·‚é
-        const cv::Scalar color = cv::Scalar( 0, 0, 255 );
-        const int32_t thickness = 2;
+        // æ¤œå‡ºã—ãŸé¡”ã®ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ã‚’æç”»ã™ã‚‹
         for( const cv::Rect& box : boxes ){
-            cv::rectangle( image, box, color, thickness, cv::LINE_AA );
+            const cv::Scalar color = cv::Scalar( 0, 0, 255 );
+            const int32_t thickness = 2;
+            cv::rectangle( image, box, color, thickness, cv::LineType::LINE_AA );
         }
 
-        // ‰æ‘œ‚ğ•\¦‚·‚é
+        // ç”»åƒã‚’è¡¨ç¤ºã™ã‚‹
         cv::imshow( "face detection", image );
         const int32_t key = cv::waitKey( 10 );
         if( key == 'q' ){
