@@ -5,14 +5,14 @@
 
 int main(int argc, char* argv[])
 {
-    // ƒLƒƒƒvƒ`ƒƒ‚ğŠJ‚­
-    cv::VideoCapture capture = cv::VideoCapture( "../face.jpg" ); // ‰æ‘œƒtƒ@ƒCƒ‹
-    //cv::VideoCapture capture = cv::VideoCapture( 0 ); // ƒJƒƒ‰
+    // ã‚­ãƒ£ãƒ—ãƒãƒ£ã‚’é–‹ã
+    cv::VideoCapture capture = cv::VideoCapture( "../face.jpg" ); // ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
+    //cv::VideoCapture capture = cv::VideoCapture( 0 ); // ã‚«ãƒ¡ãƒ©
     if( !capture.isOpened() ){
         throw std::runtime_error( "can't open capture!" );
     }
 
-    // •ª—ŞŠí‚ğ“Ç‚İ‚Ş
+    // åˆ†é¡å™¨ã‚’èª­ã¿è¾¼ã‚€
     const std::string path = "../haarcascade_frontalface_default.xml";
     cv::CascadeClassifier cascade = cv::CascadeClassifier( path );
     if( cascade.empty() ){
@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     }
 
     while( true ){
-        // ƒtƒŒ[ƒ€‚ğƒLƒƒƒvƒ`ƒƒ‚µ‚Ä‰æ‘œ‚ğ“Ç‚İ‚Ş
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ã‚­ãƒ£ãƒ—ãƒãƒ£ã—ã¦ç”»åƒã‚’èª­ã¿è¾¼ã‚€
         cv::Mat image;
         capture >> image;
         if( image.empty() ){
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
             break;
         }
 
-        // ‰æ‘œ‚ª3ƒ`ƒƒƒ“ƒlƒ‹ˆÈŠO‚Ìê‡‚Í3ƒ`ƒƒƒ“ƒlƒ‹‚É•ÏŠ·‚·‚é
+        // ç”»åƒãŒ3ãƒãƒ£ãƒ³ãƒãƒ«ä»¥å¤–ã®å ´åˆã¯3ãƒãƒ£ãƒ³ãƒãƒ«ã«å¤‰æ›ã™ã‚‹
         if( image.channels() == 1 ){
             cv::cvtColor( image, image, cv::COLOR_GRAY2BGR );
         }
@@ -36,25 +36,25 @@ int main(int argc, char* argv[])
             cv::cvtColor( image, image, cv::COLOR_BGRA2BGR );
         }
 
-        // ƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏŠ·‚·‚é
+        // ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›ã™ã‚‹
         cv::Mat gray_image;
         cv::cvtColor( image, gray_image, cv::COLOR_BGR2GRAY );
 
-        // Šç‚ğŒŸo‚·‚é
+        // é¡”ã‚’æ¤œå‡ºã™ã‚‹
         const int32_t width = gray_image.cols;
         const int32_t height = gray_image.rows;
         const cv::Size min_size = cv::Size( width / 10, height / 10 );
         std::vector<cv::Rect> boxes;
         cascade.detectMultiScale( gray_image, boxes, 1.1, 3, 0, min_size);
 
-        // ŒŸo‚µ‚½Šç‚ÌƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒX‚ğ•`‰æ‚·‚é
-        const cv::Scalar color = cv::Scalar( 0, 0, 255 );
-        const int32_t thickness = 2;
+        // æ¤œå‡ºã—ãŸé¡”ã®ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ã‚’æç”»ã™ã‚‹
         for( const cv::Rect& box : boxes ){
-            cv::rectangle( image, box, color, thickness, cv::LINE_AA );
+            const cv::Scalar color = cv::Scalar( 0, 0, 255 );
+            const int32_t thickness = 2;
+            cv::rectangle( image, box, color, thickness, cv::LineType::LINE_AA );
         }
 
-        // ‰æ‘œ‚ğ•\¦‚·‚é
+        // ç”»åƒã‚’è¡¨ç¤ºã™ã‚‹
         cv::imshow( "face detection", image );
         const int32_t key = cv::waitKey( 10 );
         if( key == 'q' ){
