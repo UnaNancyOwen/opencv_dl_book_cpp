@@ -1,7 +1,5 @@
 #include <vector>
 #include <string>
-#include <fstream>
-#include <iostream>
 #include <stdexcept>
 #include <opencv2/opencv.hpp>
 
