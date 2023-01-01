@@ -114,7 +114,7 @@ private:
         model.setPreferableTarget( cv::dnn::DNN_TARGET_CPU );
 
         // グレースケール画像を要求する（CRNNのみ）
-        if( weights == "crnn.onnx" ){
+        if( weights.find( "crnn.onnx" ) != std::string::npos ){
             require_gray = true;
         }
 
