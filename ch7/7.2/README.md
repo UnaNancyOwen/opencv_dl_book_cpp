@@ -4,7 +4,6 @@
 | -------------------- | ------------------------------------------------- |
 | haarcascade          | Haar Feature-based Cascade Classifierによる顔検出 |
 | opencv_face_detector | OpenCV Face Detectorによる顔検出                  |
-| performance_test.py  | 顔検出の処理速度を比較するテスト                  |
 
 これらのサンプルコードを実行するには、サポートサイトから学習済みモデルをダウンロードしてください。  
 
