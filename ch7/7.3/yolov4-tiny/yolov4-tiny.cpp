@@ -49,10 +49,10 @@ int main(int argc, char* argv[])
 
     // モデルの入力パラメーターを設定する
     const double scale = 1.0 / 255.0;                    // スケールファクター
-    // const cv::Size size = cv::Size( 320, 320 );       // 入力サイズ
+    //const cv::Size size = cv::Size( 320, 320 );       // 入力サイズ
     const cv::Size size = cv::Size( 416, 416 );          // 入力サイズ
-    // const cv::Size size = cv::Size( 512, 512 );       // 入力サイズ
-    // const cv::Size size = cv::Size( 608, 608 );       // 入力サイズ
+    //const cv::Size size = cv::Size( 512, 512 );       // 入力サイズ
+    //const cv::Size size = cv::Size( 608, 608 );       // 入力サイズ
     const cv::Scalar mean = cv::Scalar( 0.0, 0.0, 0.0 ); //差し引かれる平均値
     const bool swap = true;                              // チャンネルの順番（True: RGB、False: BGR）
     const bool crop = false;                             // クロップ
@@ -102,7 +102,7 @@ int main(int argc, char* argv[])
             const int32_t thickness = 2;
             cv::rectangle( image, box, color, thickness, cv::LineTypes::LINE_AA );
 
-            const std::string result = cv::format( "%s (%.3f)", class_name, confidence );
+            const std::string result = cv::format( "%s (%.3f)", class_name.c_str(), confidence );
             const cv::Point point = cv::Point( box.tl().x, box.tl().y - 5 );
             const int32_t font = cv::HersheyFonts::FONT_HERSHEY_SIMPLEX;
             const double scale = 0.5;

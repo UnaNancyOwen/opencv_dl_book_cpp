@@ -13,12 +13,12 @@ int main(int argc, char* argv[])
     }
 
     // モデルを読み込む
-    // const std::string weights = "../opencv_face_detector.caffemodel"; // float32
-    // const std::string config = "../opencv_face_detector.prototxt";
+    //const std::string weights = "../opencv_face_detector.caffemodel"; // float32
+    //const std::string config = "../opencv_face_detector.prototxt";
     const std::string weights = "../opencv_face_detector_fp16.caffemodel"; // float16
     const std::string config = "../opencv_face_detector_fp16.prototxt";
-    // const std::string weights = "../opencv_face_detector_uint8.pb"; // uint8
-    // const std::string config = "../opencv_face_detector_uint8.pbtxt";
+    //const std::string weights = "../opencv_face_detector_uint8.pb"; // uint8
+    //const std::string config = "../opencv_face_detector_uint8.pbtxt";
     cv::dnn::DetectionModel model = cv::dnn::DetectionModel( weights, config );
 
     // モデルの推論に使用するエンジンとデバイスを設定する
