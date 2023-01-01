@@ -6,11 +6,11 @@ set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
 # Create Project
-project( dp )
-add_executable( dp dp.cpp )
+project( db )
+add_executable( db db.cpp )
 
 # Set StartUp Project
-set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "dp" )
+set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "db" )
 
 # Find Package
 # OpenCV
@@ -21,5 +21,5 @@ if( OpenCV_FOUND )
   include_directories( ${OpenCV_INCLUDE_DIRS} )
 
   # Additional Dependencies
-  target_link_libraries( dp ${OpenCV_LIBS} )
+  target_link_libraries( db ${OpenCV_LIBS} )
 endif()
