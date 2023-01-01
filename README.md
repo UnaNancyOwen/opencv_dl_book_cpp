@@ -6,7 +6,7 @@
 
 ## 開発環境
 
-本書では以下の開発環境で動作を確認しています。  
+以下の開発環境で動作を確認しています。  
 
 * OS      ：Ubuntu 20.04、Windows 10/11
 * Compiler: GCC 9.3.0、Visual Studio 2022

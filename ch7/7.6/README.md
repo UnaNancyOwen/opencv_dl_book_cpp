@@ -5,7 +5,6 @@
 | db                   | DBによるテキスト検出                              |
 | crnn-ctc             | CRNN-CTCによるテキスト認識                        |
 | densenet-ctc         | DenseNet-CTCによるテキスト認識                    |
-| performance_test.py  | テキスト認識の処理速度を比較するテスト            |
 
 これらのサンプルコードを実行するには、サポートサイトから学習済みモデルをダウンロードしてください。  
 
