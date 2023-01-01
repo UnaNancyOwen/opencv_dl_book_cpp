@@ -34,7 +34,7 @@ private:
         const double scale = 1.0 / 255.0;                                               // スケールファクター
         const cv::Size size = cv::Size( 736, 736 );                                     // 入力サイズ（MSRA-TD500）
         //const cv::Size size = cv::Size( 736, 1280 );                                  // 入力サイズ（ICDAR2015）
-        const cv::Scalar mean = cv::Scalar( 122.67891434, 116.66876762, 104.00698793 ); //差し引かれる平均値
+        const cv::Scalar mean = cv::Scalar( 122.67891434, 116.66876762, 104.00698793 ); // 差し引かれる平均値
         const bool swap = false;                                                        // チャンネルの順番（True: RGB、False: BGR）
         const bool crop = false;                                                        // クロップ
         model.setInputParams( scale, size, mean, swap, crop );
@@ -148,7 +148,7 @@ int main(int argc, char* argv[])
             const bool close = true;
             const cv::Scalar color = cv::Scalar( 0, 255, 0 );
             const int32_t thickness = 2;
-            cv::polylines( image, vertex, close, color, thickness, cv::LineTypes::LINE_AA );
+            cv::polylines( image, vertex, close, color, thickness, cv::LINE_AA );
         }
 
         // 画像を表示する

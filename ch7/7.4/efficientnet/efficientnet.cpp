@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
     //const cv::Size size = cv::Size( 456, 456 );                  // 入力サイズ (b5)
     //const cv::Size size = cv::Size( 528, 528 );                  // 入力サイズ (b6)
     const cv::Size size = cv::Size( 600, 600 );                    // 入力サイズ (b7)
-    const cv::Scalar mean = cv::Scalar( 123.675, 116.28, 103.53 ); //差し引かれる平均値
+    const cv::Scalar mean = cv::Scalar( 123.675, 116.28, 103.53 ); // 差し引かれる平均値
     const bool swap = true;                                        // チャンネルの順番（True: RGB、False: BGR）
     const bool crop = true;                                        // クロップ
     model.setInputParams( scale, size, mean, swap, crop );
@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
         const double scale = 0.5;
         const cv::Scalar color = cv::Scalar( 255, 255, 255 );
         const int32_t thickness = 1;
-        cv::putText( image, result, point, font, scale, color, thickness, cv::LineTypes::LINE_AA );
+        cv::putText( image, result, point, font, scale, color, thickness, cv::LINE_AA );
 
         /*
         // 推論結果を取得する

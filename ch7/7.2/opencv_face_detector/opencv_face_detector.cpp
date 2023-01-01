@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
         for( const cv::Rect& box : boxes ){
             const cv::Scalar color = cv::Scalar( 0, 0, 255 );
             const int32_t thickness = 2;
-            cv::rectangle( image, box, color, thickness, cv::LineType::LINE_AA );
+            cv::rectangle( image, box, color, thickness, cv::LINE_AA );
         }
 
         // 画像を表示する

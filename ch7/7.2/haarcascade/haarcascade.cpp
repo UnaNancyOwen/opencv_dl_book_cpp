@@ -45,13 +45,13 @@ int main(int argc, char* argv[])
         const int32_t height = gray_image.rows;
         const cv::Size min_size = cv::Size( width / 10, height / 10 );
         std::vector<cv::Rect> boxes;
-        cascade.detectMultiScale( gray_image, boxes, 1.1, 3, 0, min_size);
+        cascade.detectMultiScale( gray_image, boxes, 1.1, 3, 0, min_size );
 
         // 検出した顔のバウンディングボックスを描画する
         for( const cv::Rect& box : boxes ){
             const cv::Scalar color = cv::Scalar( 0, 0, 255 );
             const int32_t thickness = 2;
-            cv::rectangle( image, box, color, thickness, cv::LineType::LINE_AA );
+            cv::rectangle( image, box, color, thickness, cv::LINE_AA );
         }
 
         // 画像を表示する

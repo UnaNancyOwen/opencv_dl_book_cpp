@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
     const double scale = 1.0 / 127.5;                          // スケールファクター
     const cv::Size size = cv::Size( 513, 513 );                // 入力サイズ（VOC）
     //const cv::Size size = cv::Size( 2049, 1025 );            // 入力サイズ（CityScapes）
-    const cv::Scalar mean = cv::Scalar( 127.5, 127.5, 127.5 ); //差し引かれる平均値
+    const cv::Scalar mean = cv::Scalar( 127.5, 127.5, 127.5 ); // 差し引かれる平均値
     const bool swap = true;                                    // チャンネルの順番（True: RGB、False: BGR）
     const bool crop = false;                                   // クロップ
     model.setInputParams( scale, size, mean, swap, crop );

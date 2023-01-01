@@ -36,7 +36,7 @@ private:
         const double scale = 1.0 / 255.0;                                               // スケールファクター
         const cv::Size size = cv::Size( 736, 736 );                                     // 入力サイズ（MSRA-TD500）
         //const cv::Size size = cv::Size( 736, 1280 );                                  // 入力サイズ（ICDAR2015）
-        const cv::Scalar mean = cv::Scalar( 122.67891434, 116.66876762, 104.00698793 ); //差し引かれる平均値
+        const cv::Scalar mean = cv::Scalar( 122.67891434, 116.66876762, 104.00698793 ); // 差し引かれる平均値
         const bool swap = false;                                                        // チャンネルの順番（True: RGB、False: BGR）
         const bool crop = false;                                                        // クロップ
         model.setInputParams( scale, size, mean, swap, crop );
@@ -119,7 +119,7 @@ private:
         // モデルの入力パラメーターを設定する
         const double scale = 1.0 / 127.5;                          // スケールファクター
         const cv::Size size = cv::Size( 100, 32 );                 // 入力サイズ
-        const cv::Scalar mean = cv::Scalar( 127.5, 127.5, 127.5 ); //差し引かれる平均値
+        const cv::Scalar mean = cv::Scalar( 127.5, 127.5, 127.5 ); // 差し引かれる平均値
         const bool swap = true;                                    // チャンネルの順番（True: RGB、False: BGR）
         const bool crop = false;                                   // クロップ
         model.setInputParams( scale, size, mean, swap, crop );
@@ -130,7 +130,7 @@ private:
         model.setDecodeType( type );
 
         // 語彙リストを設定する
-        const std::string vocabulary_file = "../alphabet_36.txt";   // 英語, 数字
+        const std::string vocabulary_file = "../alphabet_36.txt"; // 英語, 数字
         const std::vector<std::string> vocabularies = read_vocabularies( vocabulary_file );
         model.setVocabulary( vocabularies );
     }
@@ -255,7 +255,7 @@ int main(int argc, char* argv[])
             const bool close = true;
             const cv::Scalar color = cv::Scalar( 0, 255, 0 );
             const int32_t thickness = 2;
-            cv::polylines( image, vertex, close, color, thickness, cv::LineTypes::LINE_AA );
+            cv::polylines( image, vertex, close, color, thickness, cv::LINE_AA );
         }
 
         // テキスト認識の結果を描画する
@@ -268,9 +268,9 @@ int main(int argc, char* argv[])
             const double scale = 0.5;
             const cv::Scalar color = cv::Scalar( 255, 255, 255 );
             const int32_t thickness = 1;
-            cv::putText( image, text, position, font, scale, color, thickness, cv::LineTypes::LINE_AA );
+            cv::putText( image, text, position, font, scale, color, thickness, cv::LINE_AA );
 
-            // OpenCVのcv2.putText()では中国語（漢字）は描画できないので標準出力に表示する
+            // OpenCVのcv::putText()では中国語（漢字）は描画できないので標準出力に表示する
             std::cout << text << std::endl;
         }
 

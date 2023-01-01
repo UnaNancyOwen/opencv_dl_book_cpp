@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
     // モデルの入力パラメーターを設定する
     const double scale = 1.0 / 255.0;                          // スケールファクター
     const cv::Size size = cv::Size( 256, 456 );                // 入力サイズ
-    const cv::Scalar mean = cv::Scalar( 128.0, 128.0, 128.0 ); //差し引かれる平均値
+    const cv::Scalar mean = cv::Scalar( 128.0, 128.0, 128.0 ); // 差し引かれる平均値
     const bool swap = false;                                   // チャンネルの順番（True: RGB、False: BGR）
     const bool crop = false;                                   // クロップ
     model.setInputParams( scale, size, mean, swap, crop );
