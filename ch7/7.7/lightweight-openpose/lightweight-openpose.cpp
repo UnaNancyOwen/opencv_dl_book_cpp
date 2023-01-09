@@ -76,14 +76,14 @@ void draw_bone( cv::Mat& image, const cv::Point start_point, const cv::Point end
 int main(int argc, char* argv[])
 {
     // キャプチャを開く
-    cv::VideoCapture capture = cv::VideoCapture( "pose.jpg" ); // 画像ファイル
+    cv::VideoCapture capture = cv::VideoCapture( "../pose.jpg" ); // 画像ファイル
     //cv::VideoCapture capture = cv::VideoCapture( 0 ); // カメラ
     if( !capture.isOpened() ){
         throw std::runtime_error( "can't open capture!" );
     }
 
     // モデルを読み込む
-    const std::string weights = "human-pose-estimation.onnx";
+    const std::string weights = "../human-pose-estimation.onnx";
     cv::dnn::KeypointsModel model = cv::dnn::KeypointsModel( weights );
 
     // モデルの推論に使用するエンジンとデバイスを設定する
